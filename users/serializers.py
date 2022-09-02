@@ -34,6 +34,14 @@ class UserCreateSerializer(serializers.ModelSerializer):
         self._locations = self.initial_data.pop()
         return super().is_valid(raise_exception=raise_exception)
 
+    def create(self, validated_data):
+        user = User.objects.create(**validated_data)
+
+        user.set_password(validated_data["password"])
+        user.save()
+
+        return user
+
 
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:

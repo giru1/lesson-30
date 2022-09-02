@@ -159,3 +159,5 @@ REST_FRAMEWORK = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 TOTAL_0N_PAGE = 10
+
+AUTH_USER_MODEL = 'users.User'
