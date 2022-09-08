@@ -30,16 +30,18 @@ class Command(BaseCommand):
 
         # Code to load the data into database
         for row in DictReader(open('./datasets/ad.csv', encoding='utf-8')):
-            author_id = User.objects.get(id=row['author_id'])
-            category_id = Category.objects.get(id=row['category_id'])
+            print(row['author_id'])
+            print(row['category_id'])
+            # author_id = User.objects.get(id=row['author_id'])
+            # category_id = Category.objects.get(id=row['category_id'])
             child = Ads.objects.create(
                         name=row['name'],
-                        author_id=author_id,
+                        author_id=row['author_id'],
                         price=row['price'],
                         description=row['description'],
                         is_published=row['is_published'].lower().title(),
                         image=row['image'],
-                        category_id=category_id
+                        category_id=row['category_id']
             )
 
 
